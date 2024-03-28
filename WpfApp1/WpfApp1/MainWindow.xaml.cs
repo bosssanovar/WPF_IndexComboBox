@@ -45,7 +45,7 @@ namespace WpfApp1
 
             for (int number = 1; number <= 640; number++)
             {
-                int length = r.Next(4, 18);
+                int length = r.Next(4, 32);
                 ComboItems.Add(new(number, GenerateText(length)));
             }
         }
@@ -80,6 +80,23 @@ namespace WpfApp1
             get
             {
                 return $"{Val} : {Text}";
+            }
+        }
+    }
+
+    public class AddressTemplateSelector : System.Windows.Controls.DataTemplateSelector
+    {
+        public override DataTemplate SelectTemplate(object item, DependencyObject container)
+        {
+            ContentPresenter presenter = (ContentPresenter)container;
+
+            if (presenter.TemplatedParent is ComboBox)
+            {
+                return (DataTemplate)presenter.FindResource("AddressComboCollapsed");
+            }
+            else // Templated parent is ComboBoxItem
+            {
+                return (DataTemplate)presenter.FindResource("AddressComboExpanded");
             }
         }
     }

@@ -8,6 +8,31 @@
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
         Title="MainWindow" Height="177" Width="271">
     <Grid>
+        <ComboBox HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="183"
+                  MaxDropDownHeight="1000"
+                  ItemsSource="{Binding ComboItems}" SelectedValue="{Binding SelectedValue.Value}"
+                  SelectedValuePath="Val"
+                  IsEditable="False" TextSearch.TextPath="Disp">
+            <ComboBox.Resources>
+                <DataTemplate x:Key="AddressComboCollapsed" >
+                    <TextBlock Text="{Binding Path=Text}"/>
+                </DataTemplate>
+
+                <DataTemplate x:Key="AddressComboExpanded" >
+                    <TextBlock Text="{Binding Path=Disp}"/>
+                </DataTemplate>
+            </ComboBox.Resources>
+            
+            <ComboBox.ItemTemplateSelector>
+                <local:AddressTemplateSelector/>
+            </ComboBox.ItemTemplateSelector>
+            
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" MaxHeight="2000"/>
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
         <ComboBox HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Width="183"
                   MaxDropDownHeight="1000"
                   ItemsSource="{Binding ComboItems}" SelectedValue="{Binding SelectedValue.Value}"
