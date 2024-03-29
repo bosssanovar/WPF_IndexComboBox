@@ -45,7 +45,7 @@ namespace WpfApp1
 
             for (int number = 1; number <= 640; number++)
             {
-                int length = r.Next(4, 32);
+                int length = r.Next(4, 36);
                 ComboItems.Add(new(number, GenerateText(length)));
             }
         }

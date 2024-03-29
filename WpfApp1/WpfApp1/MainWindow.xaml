@@ -6,46 +6,62 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-        Title="MainWindow" Height="177" Width="271">
-    <Grid>
-        <ComboBox HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="183"
-                  MaxDropDownHeight="1000"
-                  ItemsSource="{Binding ComboItems}" SelectedValue="{Binding SelectedValue.Value}"
-                  SelectedValuePath="Val"
-                  IsEditable="False" TextSearch.TextPath="Disp">
-            <ComboBox.Resources>
-                <DataTemplate x:Key="AddressComboCollapsed" >
-                    <TextBlock Text="{Binding Path=Text}"/>
-                </DataTemplate>
+        Title="MainWindow" Height="207" Width="324">
+    <Grid Margin="5">
+        <StackPanel>
 
-                <DataTemplate x:Key="AddressComboExpanded" >
-                    <TextBlock Text="{Binding Path=Disp}"/>
-                </DataTemplate>
-            </ComboBox.Resources>
-            
-            <ComboBox.ItemTemplateSelector>
-                <local:AddressTemplateSelector/>
-            </ComboBox.ItemTemplateSelector>
-            
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Vertical" MaxHeight="2000"/>
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
-        <ComboBox HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Width="183"
+            <ComboBox HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="250"
                   MaxDropDownHeight="1000"
                   ItemsSource="{Binding ComboItems}" SelectedValue="{Binding SelectedValue.Value}"
                   SelectedValuePath="Val" DisplayMemberPath="Disp"
                   IsEditable="False">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Vertical" MaxHeight="2000"/>
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="41,101,0,0" Text="{Binding SelectedDisplay.Value}" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="115,67,0,0" TextWrapping="Wrap" Text="フォーカス退避場所" VerticalAlignment="Top" Width="120"/>
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" MaxHeight="2000"/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
 
+            <ComboBox HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="250"
+                  MaxDropDownHeight="1000"
+                  ItemsSource="{Binding ComboItems}" SelectedValue="{Binding SelectedValue.Value}"
+                  SelectedValuePath="Val" DisplayMemberPath="Disp"
+                  IsEditable="True">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" MaxHeight="2000"/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+            
+            <ComboBox HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Width="250"
+                  MaxDropDownHeight="1000"
+                  ItemsSource="{Binding ComboItems}" SelectedValue="{Binding SelectedValue.Value}"
+                  SelectedValuePath="Val"
+                  IsEditable="False" TextSearch.TextPath="Disp">
+                <ComboBox.Resources>
+                    <DataTemplate x:Key="AddressComboCollapsed" >
+                        <TextBlock Text="{Binding Path=Text}"/>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="AddressComboExpanded" >
+                        <TextBlock Text="{Binding Path=Disp}"/>
+                    </DataTemplate>
+                </ComboBox.Resources>
+
+                <ComboBox.ItemTemplateSelector>
+                    <local:AddressTemplateSelector/>
+                </ComboBox.ItemTemplateSelector>
+
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" MaxHeight="2000"/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+
+            <TextBlock HorizontalAlignment="Left" Margin="5" Text="{Binding SelectedDisplay.Value}" VerticalAlignment="Top"/>
+
+        </StackPanel>
     </Grid>
 </Window>
